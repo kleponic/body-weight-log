@@ -1,2 +1,24 @@
 <!DOCTYPE html>
-{{ data }}
+
+<table>
+    <thead>
+        <tr>
+            <td>Tanggal</td>
+            <td>Max</td>
+            <td>Min</td>
+            <td>Variance</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for log in bodyweightlogs %}
+        <tr>
+            <td>{{ log.date|date:"d-M-Y" }}</td>
+            <td>{{ log.max_weight|floatformat:"-2"}}</td>
+            <td>{{ log.min_weight|floatformat:"-2"}}</td>
+            <td>{{ log.variance|floatformat:"-2" }}</td>
+            <td><a href="{% url 'detail' log_id=log.id %}">Detail</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

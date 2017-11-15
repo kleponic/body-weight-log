@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name="index"),
     url(r'^create/$', views.create, name="create"),
-    url(r'^detail/(?P<uuid>[0-9a-z-]+)/$', views.detail, name="detail"),
-    url(r'^update/(?P<uuid>[0-9a-z-]+)/$', views.update, name="update"),
+    url(r'^detail/(?P<log_id>[0-9]+)/$', views.detail, name="detail"),
+    url(r'^update/(?P<log_id>[0-9]+)/$', views.update, name="update"),
 ]

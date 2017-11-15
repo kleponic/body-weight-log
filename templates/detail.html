@@ -1,2 +1,28 @@
 <!DOCTYPE html>
-{{ data }}
+<table>
+    <tbody>
+        <tr>
+            <td>Tanggal</td>
+            <td>{{ bodyweightlog.date|date:"d-M-Y" }}</td>
+        </tr>
+        <tr>
+            <td>Max</td>
+            <td>{{ bodyweightlog.max_weight|floatformat:"-2"}}</td>
+        </tr>
+
+        <tr>
+            <td>Min</td>
+            <td>{{ bodyweightlog.min_weight|floatformat:"-2"}}</td>
+        </tr>
+
+        <tr>
+            <td>Variance</td>
+            <td>{{ variance|floatformat:"-2" }}</td>
+        </tr>
+
+        
+        <tr>
+            <td>Action </td>
+            <td><a href="{% url 'update' log_id=bodyweightlog.id %}">Update</a></td>
+        </tr>
+</table>
