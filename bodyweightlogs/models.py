@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from time import timezone
 from decimal import Decimal
+from django.utils import timezone
 
 class BodyWeightLog(models.Model):
     """
