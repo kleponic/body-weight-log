@@ -64,15 +64,25 @@ def update(request, log_id):
     except Exception,e:
         raise e
 
-    # bound form to submitted data
-    form = BodyWeightLogForm(request.POST, instance=bodyweightlog)
+    form = BodyWeightLogForm(instance=bodyweightlog)
 
-    # save to DB
-    try:
-        form.save()
-    except Exception,e:
-        raise
+    if request.method == "POST":
+        # bound form to submitted data
+        form = BodyWeightLogForm(request.POST, instance=bodyweightlog)
 
-    # redirect to detail page
-    return redirect(reverse('detail', kwargs={'log_id': log_id}))
+        if not form.is_valid():
+            print form.errors()
+        else:
+            # save to DB
+            try:
+                form.save()
+            except Exception,e:
+                raise e
+
+        # redirect to detail page
+        return redirect(reverse('detail', kwargs={'log_id': log_id}))
+
+    return render(request, 'form.html', {'form': form})
+
+
 
