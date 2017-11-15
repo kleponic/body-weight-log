@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CURRENT = os.path.dirname(__file__)
 
 
 # Quick-start development settings - unsuitable for production
@@ -59,7 +60,9 @@ ROOT_URLCONF = 'weightlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.abspath(os.path.join(CURRENT, "..", "templates")),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
